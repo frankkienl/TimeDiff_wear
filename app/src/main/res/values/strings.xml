@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TimeDiff_wear</string>
+    <string name="now_time">Now - %s</string>
+    <string name="soon_time">Soon - %s</string>
+    <string name="time_unit_second">sec</string>
+    <string name="time_unit_minute">min</string>
+    <string name="time_unit_hour">hour</string>
+    <string name="time_unit_day">day</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+</resources>
