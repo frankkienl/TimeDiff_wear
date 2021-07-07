@@ -17,7 +17,8 @@ class MainActivity : Activity() {
         updateUI()
     }
     private var isPaused = false
-    private var unit: MyTimeUnit = MyTimeUnit.HOUR
+    private var unit1: MyTimeUnit = MyTimeUnit.HOUR
+    private var unit2: MyTimeUnit = MyTimeUnit.MIN
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +31,7 @@ class MainActivity : Activity() {
     }
 
     fun initUI() {
-        binding.btnUnit.setOnClickListener {
+        binding.btnUnit1.setOnClickListener {
             val builder = AlertDialog.Builder(it.context)
             builder.setItems(
                 arrayOf(
@@ -41,14 +42,33 @@ class MainActivity : Activity() {
                 )
             ) { _, index ->
                 when (index) {
-                    0 -> unit = MyTimeUnit.SEC
-                    1 -> unit = MyTimeUnit.MIN
-                    2 -> unit = MyTimeUnit.HOUR
-                    3 -> unit = MyTimeUnit.DAY
+                    0 -> unit1 = MyTimeUnit.SEC
+                    1 -> unit1 = MyTimeUnit.MIN
+                    2 -> unit1 = MyTimeUnit.HOUR
+                    3 -> unit1 = MyTimeUnit.DAY
                 }
                 updateUI()
             }
-
+            builder.create().show()
+        }
+        binding.btnUnit2.setOnClickListener {
+            val builder = AlertDialog.Builder(it.context)
+            builder.setItems(
+                arrayOf(
+                    getString(MyTimeUnit.SEC.stringRes),
+                    getString(MyTimeUnit.MIN.stringRes),
+                    getString(MyTimeUnit.HOUR.stringRes),
+                    getString(MyTimeUnit.DAY.stringRes)
+                )
+            ) { _, index ->
+                when (index) {
+                    0 -> unit1 = MyTimeUnit.SEC
+                    1 -> unit1 = MyTimeUnit.MIN
+                    2 -> unit1 = MyTimeUnit.HOUR
+                    3 -> unit1 = MyTimeUnit.DAY
+                }
+                updateUI()
+            }
             builder.create().show()
         }
     }
@@ -57,10 +77,13 @@ class MainActivity : Activity() {
         if (isPaused) return
 
         //get input
-        val amountString = binding.edAmount.text.toString()
-        var amount = 0
+        val amountString1 = binding.edAmount1.text.toString()
+        val amountString2 = binding.edAmount2.text.toString()
+        var amount1 = 0
+        var amount2 = 0
         try {
-            amount = Integer.parseInt(amountString)
+            amount1 = Integer.parseInt(amountString1)
+            amount2 = Integer.parseInt(amountString2)
         } catch (e: NumberFormatException) {
             //ignore
         }
@@ -69,14 +92,16 @@ class MainActivity : Activity() {
         val sdf = SimpleDateFormat.getDateTimeInstance()
         val now = GregorianCalendar()
         val soon = GregorianCalendar()
-        soon.add(unit.calendarField, amount)
+        soon.add(unit1.calendarField, amount1)
+        soon.add(unit2.calendarField, amount2)
 
         binding.fromTv.text =
             getString(R.string.now_time, sdf.format(Date.from(now.toZonedDateTime().toInstant())))
         binding.soonTv.text =
             getString(R.string.soon_time, sdf.format(Date.from(soon.toZonedDateTime().toInstant())))
 
-        binding.btnUnit.text = getString(unit.stringRes)
+        binding.btnUnit1.text = getString(unit1.stringRes)
+        binding.btnUnit2.text = getString(unit2.stringRes)
 
         //next iteration
         handler.postDelayed(updaterinator, 1000)

@@ -37,7 +37,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/ed_amount"
+                        android:id="@+id/ed_amount1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -47,7 +47,33 @@
                         android:text="1" />
 
                     <Button
-                        android:id="@+id/btn_unit"
+                        android:id="@+id/btn_unit1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="hour"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/ed_amount2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:imeOptions="actionDone"
+                        android:hint="e.g. 7"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/btn_unit2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
