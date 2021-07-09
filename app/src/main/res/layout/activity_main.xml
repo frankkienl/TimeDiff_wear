@@ -8,11 +8,12 @@
     tools:context=".MainActivity"
     tools:deviceIds="wear">
 
+    <!-- android:padding="@dimen/inner_frame_layout_padding" //-->
+    <!-- app:layout_boxedEdges="left|right" //-->
     <FrameLayout
+        android:padding="@dimen/inner_frame_layout_padding_5"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/inner_frame_layout_padding"
-        app:layout_boxedEdges="all">
+        android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -23,6 +24,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher_round"
+                    />
+
                 <TextView
                     android:id="@+id/from_tv"
                     android:layout_width="wrap_content"
@@ -31,79 +39,17 @@
                     android:textSize="16sp" />
 
                 <LinearLayout
+                    android:id="@+id/input_rows_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="vertical" />
 
-                    <EditText
-                        android:id="@+id/ed_amount1"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:inputType="number"
-                        android:imeOptions="actionDone"
-                        android:hint="e.g. 7"
-                        android:text="1" />
-
-                    <Button
-                        android:id="@+id/btn_unit1"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="hour"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
+                <Button
+                    android:id="@+id/btn_add_input_row"
+                    android:text="add input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/ed_amount2"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:inputType="number"
-                        android:imeOptions="actionDone"
-                        android:hint="e.g. 7"
-                        android:text="1" />
-
-                    <Button
-                        android:id="@+id/btn_unit2"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="hour"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:visibility="gone"
-                        android:id="@+id/btn_plus"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="+" />
-
-                    <Button
-                        android:visibility="gone"
-                        android:id="@+id/btn_minus"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="-" />
-                </LinearLayout>
+                    android:layout_height="wrap_content" />
 
                 <View
                     android:layout_width="match_parent"
@@ -127,7 +73,16 @@
                     android:id="@+id/lbl_about"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
                     android:text="For source code, see github.com/frankkienl" />
+
+                <ImageView
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher_round"
+                    />
 
             </LinearLayout>
         </ScrollView>
